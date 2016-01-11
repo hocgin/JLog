@@ -1,7 +1,78 @@
 package io.github.hocgin.jlog;
 
+import java.util.Objects;
+
 /**
- * Created by ubuntu on 16-1-7.
+ * Created by moy on 16-1-11.
  */
 public class JLog {
+
+    public static boolean debug = true;
+    private static CallBack mCallback = null;
+
+    enum Level{
+        V, // 普通级别
+        W, // 警告级别
+        E // 错误级别
+    }
+
+    protected void log(String msg, Objects[] objects, CallBack callBack) {
+        if (debug) {
+            _ns();
+            _nn(msg, objects, callBack);
+            _ne();
+        }
+    }
+
+    private void _ns() {
+
+    }
+
+    private void _nn(String msg, Objects[] objects, CallBack callBack) {
+        msg = String.format(msg, objects);
+        System.out.println(msg);
+        _autoCallBack(msg, callBack);
+    }
+
+    /**
+     * auto call print call back
+     * @param msg
+     * @param callBack
+     */
+    private void _autoCallBack(String msg, CallBack callBack) {
+        if (callBack != null) {
+            callBack.run(msg);
+        } else if (mCallback != null) {
+            mCallback.run(msg);
+        }
+    }
+
+    private void _nn(Object obj, CallBack callBack) {
+//        try {
+//            Class<?> aClass = ClassLoader.getSystemClassLoader().loadClass("com.google.gson.Gson");
+//            aClass.
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        msg = String.format(msg, objects);
+//        System.out.println(msg);
+//        if (callBack != null) {
+//            callBack.run(msg);
+//        } else if (mCallback != null) {
+//            mCallback.run(msg);
+//        }
+    }
+
+    private void _ne() {
+
+    }
+
+    public static void setCallback(CallBack callback) {
+        JLog.mCallback = callback;
+    }
+
+    interface CallBack {
+        void run(String msg);
+    }
+
 }
