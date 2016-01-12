@@ -1,5 +1,7 @@
 package io.github.hocgin.jlog;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Objects;
 
 /**
@@ -34,33 +36,22 @@ public class JLog {
         _autoCallBack(msg, callBack);
     }
 
-    /**
-     * auto call print call back
-     * @param msg
-     * @param callBack
-     */
-    private void _autoCallBack(String msg, CallBack callBack) {
+    private void _nn(Object obj, CallBack callBack) {
+        Class<?> aClass;
+        String msg = "";
+        try {
+            aClass = ClassLoader.getSystemClassLoader().loadClass("com.google.gson.Gson");
+            Method toJson = aClass.getDeclaredMethod("toJson", Object.class);
+            msg = (String) toJson.invoke(aClass.newInstance(), obj);
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+            e.printStackTrace();
+        }
+        System.out.println(msg);
         if (callBack != null) {
             callBack.run(msg);
         } else if (mCallback != null) {
             mCallback.run(msg);
         }
-    }
-
-    private void _nn(Object obj, CallBack callBack) {
-//        try {
-//            Class<?> aClass = ClassLoader.getSystemClassLoader().loadClass("com.google.gson.Gson");
-//            aClass.
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        msg = String.format(msg, objects);
-//        System.out.println(msg);
-//        if (callBack != null) {
-//            callBack.run(msg);
-//        } else if (mCallback != null) {
-//            mCallback.run(msg);
-//        }
     }
 
     private void _ne() {
@@ -74,5 +65,19 @@ public class JLog {
     interface CallBack {
         void run(String msg);
     }
+
+    /**
+     * auto call print call back
+     * @param msg
+     * @param callBack
+     */
+    private void _autoCallBack(String msg, CallBack callBack) {
+        if (callBack != null) {
+            callBack.run(msg);
+        } else if (mCallback != null) {
+            mCallback.run(msg);
+        }
+    }
+
 
 }
