@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by hocgin on 16-4-21.
  */
-public class JLogFormat implements LogTool {
+public class JLogTool implements LogTool {
 
     private final String format = "%s %s %s";
 

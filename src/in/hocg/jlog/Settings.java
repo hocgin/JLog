@@ -1,6 +1,6 @@
 package in.hocg.jlog;
 
-import in.hocg.jlog.core.JLogFormat;
+import in.hocg.jlog.core.JLogTool;
 import in.hocg.jlog.core.LogTool;
 import in.hocg.jlog.enums.LogLevel;
 import in.hocg.jlog.util.LangKit;
@@ -58,7 +58,7 @@ public final class Settings {
 
     public LogTool getLogTool() {
         if (LangKit.isNull(logTool)) {
-            logTool = new JLogFormat();
+            logTool = new JLogTool();
         }
         return logTool;
     }
