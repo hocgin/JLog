@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="in.hocg.jlog-1.0.0">
+    <output-path>$PROJECT_DIR$/out/artifacts/in_hocg_jlog_1_0_0</output-path>
+    <root id="archive" name="JLog.jar">
+      <element id="module-output" name="JLog" />
+    </root>
+  </artifact>
+</component>

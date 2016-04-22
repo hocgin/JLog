@@ -1,6 +1,9 @@
 ## JLog
 > This is `Logger` for Java
 
+## Download
+[JLog.jar](http://7xs6lq.com1.z0.glb.clouddn.com/github/jarJLog.jar)
+
 ## Usage
 ### Settings (optional)
 ```java
