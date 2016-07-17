@@ -77,7 +77,11 @@ public final class JLog {
         printer.json(json);
     }
     public static void json(Object jsonObj) {
-        printer.json(new JSONObject(jsonObj).toString());
+        if (jsonObj == null) {
+            printer.json("");
+        } else {
+            printer.json(new JSONObject(jsonObj).toString());
+        }
     }
     public static void json(Object[] jsonObj) {
         printer.json(new JSONArray(jsonObj).toString());
