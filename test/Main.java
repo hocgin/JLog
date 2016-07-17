@@ -23,6 +23,7 @@ public class Main {
         User xiaoMing = new User(users, "xiaoMing");
 
         Object o = null;
+
         JLog.json(o);
         JLog.json(users);
         JLog.d("d Hello World");
