@@ -1,8 +1,13 @@
 ## JLog
 > This is `Logger` for Java
 
+## Update
+> [1.0.1] 2016年07月17日11:31:30
+- 修复 json(null) 异常
+- 清除目录结构
+
 ## Download
-[JLog.jar](http://7xs6lq.com1.z0.glb.clouddn.com/github/jarJLog.jar)
+[JLog - 1.0.0](http://7xs6lq.com1.z0.glb.clouddn.com/github/jarJLog.jar)
 
 ## Usage
 ### Settings (optional)
