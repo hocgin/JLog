@@ -1,3 +1,5 @@
+package in.hocg;
+
 import in.hocg.jlog.JLog;
 import in.hocg.jlog.enums.Foreground;
 import in.hocg.jlog.util.JRender;

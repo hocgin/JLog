@@ -169,7 +169,9 @@ public final class JLogPrinter implements Printer {
      * @param args    格式化参数
      */
     private synchronized void log(LogType logType, String msg, Object... args) {
-        if (settings.getLogLevel() == LogLevel.NONE) return;
+        if (settings.getLogLevel() == LogLevel.NONE) {
+            return;
+        }
         String tag = _getTag();
         String message = LangKit.format(msg, args);
         int methodCount = _getMethodCount();

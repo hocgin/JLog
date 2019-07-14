@@ -12,39 +12,39 @@ import java.util.Date;
  * Created by hocgin on 16-4-21.
  */
 public class JLogTool implements LogTool {
-
+    
     private final String format = "%s %s %s";
-
+    
     @Override
     public void d(String tag, String message) {
         System.out.println(_formatOut(tag, message, LogType.DEBUG));
     }
-
+    
     @Override
     public void e(String tag, String message) {
         System.out.println(_formatOut(tag, message, LogType.ERROR));
     }
-
+    
     @Override
     public void w(String tag, String message) {
         System.out.println(_formatOut(tag, message, LogType.WARN));
     }
-
+    
     @Override
     public void i(String tag, String message) {
         System.out.println(_formatOut(tag, message, LogType.INFO));
     }
-
+    
     @Override
     public void v(String tag, String message) {
         System.out.println(_formatOut(tag, message, LogType.VERBOSE));
     }
-
+    
     @Override
     public void wtf(String tag, String message) {
         e(tag, message);
     }
-
+    
     /**
      * 行输出格式
      *
@@ -56,7 +56,7 @@ public class JLogTool implements LogTool {
     private String _formatOut(String tag, String message, LogType logType) {
         return String.format(this.format, _getCurrentTime(), _getTag(tag, logType), _getContent(message, logType));
     }
-
+    
     /**
      * 当前时间格式
      *
@@ -66,7 +66,7 @@ public class JLogTool implements LogTool {
         String dateFmt = "yyyy/MM/dd HH:mm:ss";
         return String.format("%s", new SimpleDateFormat(dateFmt).format(new Date()));
     }
-
+    
     /**
      * 当前标签格式
      *
@@ -81,9 +81,10 @@ public class JLogTool implements LogTool {
         s = JRender.modify(s, Modify.Bold);
         return _renderColor(s, logType);
     }
-
+    
     /**
      * 当前内容格式
+     *
      * @param message
      * @param logType
      * @return
@@ -91,7 +92,7 @@ public class JLogTool implements LogTool {
     private String _getContent(String message, LogType logType) {
         return _renderColor(message, logType);
     }
-
+    
     /**
      * 渲染颜色
      *
