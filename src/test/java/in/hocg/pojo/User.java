@@ -1,4 +1,4 @@
-package in.hocg;
+package in.hocg.pojo;
 
 import java.util.List;
 

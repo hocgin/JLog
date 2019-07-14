@@ -299,7 +299,7 @@ public final class JLogPrinter implements Printer {
 
     @Override
     public void clear() {
-        settings = null;
+        settings = new Settings();
     }
 
     private void _out(LogType logType, String tag, String message) {

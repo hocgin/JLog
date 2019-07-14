@@ -30,7 +30,6 @@ public final class JLog {
 
     public static void clear() {
         printer.clear();
-        printer = null;
     }
 
     public static Printer tag(String tag) {

@@ -2,12 +2,13 @@ package in.hocg.jlog.util;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by hocgin on 16-4-21.
  */
 public class LangKit {
-
+    
     /**
      * 将数组拆解成字符串，并指定隔开的符号
      *
@@ -27,7 +28,7 @@ public class LangKit {
         }
         return "";
     }
-
+    
     /**
      * 拼接
      *
@@ -41,7 +42,7 @@ public class LangKit {
         ts.addAll(Arrays.asList(a));
         return (T[]) ts.toArray();
     }
-
+    
     /**
      * 拼接
      *
@@ -55,7 +56,7 @@ public class LangKit {
         ts.addAll(Arrays.asList(a));
         return ts;
     }
-
+    
     /**
      * 为空，返回默认值
      *
@@ -70,20 +71,23 @@ public class LangKit {
         }
         return o;
     }
-
+    
     public static <T> boolean isNull(T o) {
         return o == null || "".equals(o);
     }
-
-
+    
+    
     public static boolean isEmpty(String str) {
         return str == null || "".equals(str);
     }
-
+    
     public static String format(String message, Object... args) {
-        return args.length == 0 ? message : String.format(message, args);
+        if (Objects.isNull(args)) {
+            args = new Object[]{args};
+        }
+        return (args.length == 0) ? message : String.format(message, args);
     }
-
+    
     public static String getSimpleClassName(String name) {
         int lastIndex = name.lastIndexOf(".");
         return name.substring(lastIndex + 1);
